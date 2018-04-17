@@ -8,13 +8,15 @@ import MovieComponent from "../components/movie"
 import TheaterComponent from "../components/theater"
 import LoginComponent from "../components/login"
 import RegisterComponent from "../components/register"
+import FindComponent from "../components/find"
 import NewsComponent from "../components/news"
 import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
+
 Vue.use(Router)
 
-export default router = new Router({
+const router = new Router({
   mode: "hash", //默认值是hash
   routes: [
     //主页
@@ -53,8 +55,12 @@ export default router = new Router({
 
     //发现
     {
-      path: "/vews",
-      component: VewsComponent
+    	path:"/find",
+    	component:FindComponent
+    },
+    {
+      path: "/news",
+      component: NewsComponent
     },
     {
       path: "/trailer",
@@ -76,3 +82,4 @@ export default router = new Router({
     }
   ]
 })
+export default router;
