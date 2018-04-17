@@ -17,69 +17,68 @@ import ReviewComponent from "../components/review"
 Vue.use(Router)
 
 const router = new Router({
-  mode: "hash", //默认值是hash
-  routes: [
-    //主页
-    {
-      path: "/home",
-      component: HomeComponent,
-      children: [{
-          path: "hot",
-          component: HotComponent
-        },
-        {
-          path: "coming",
-          component: ComingComponent
-        }
-      ]
-    },
+	mode: "hash", //默认值是hash
+	routes: [
+		//主页
+		{
+			path: "/home",
+			component: HomeComponent,
+			children: [{
+					path: "hot",
+					component: HotComponent
+				},
+				{
+					path: "coming",
+					component: ComingComponent
+				}
+			]
+		},
 
-    //购票&&登录注册
-    {
-      path: "/movie/:id",
-      component: MovieComponent,
-    },
-    {
-      path: "/theater/:id",
-      component: TheaterComponent,
-    },
-    {
-      path: "/login",
-      component: LoginComponent
-    },
-    {
-      path: "/register",
-      component: RegisterComponent
-    },
+		//购票&&登录注册
+		{
+			path: "/movie/:id",
+			component: MovieComponent,
+		},
+		{
+			path: "/theater/:id",
+			component: TheaterComponent,
+		},
+		{
+			path: "/login",
+			component: LoginComponent
+		},
+		{
+			path: "/register",
+			component: RegisterComponent
+		},
 
+		//发现
+		{
+			path: "/find",
+			component: FindComponent,
+			chilren: [{
+					path: "news",
+					component: NewsComponent
+				},
+				{
+					path: "trailer",
+					component: TrailerComponent
+				},
+				{
+					path: "toplist",
+					component: ToplistComponent
+				},
+				{
+					path: "review",
+					component: ReviewComponent
+				}
+			]
+		},
 
-    //发现
-    {
-    	path:"/find",
-    	component:FindComponent
-    },
-    {
-      path: "/news",
-      component: NewsComponent
-    },
-    {
-      path: "/trailer",
-      component: TrailerComponent
-    },
-    {
-      path: "/toplist",
-      component: ToplistComponent
-    },
-    {
-      path: "/review",
-      component: ReviewComponent
-    },
-
-
-    {
-      path: "*",
-      redirect: "/home"
-    }
-  ]
+		//		{
+		//			path: "*",
+		//			redirect: "/home"
+		//		}
+	]
 })
 export default router;
