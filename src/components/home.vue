@@ -15,11 +15,18 @@
         <b>正在热映（46部）</b>
       </a>
     </h2>
-    <ul>
-      <li>
-
+    <ul v-if="mslength">
+      <li v-for="i in 8">
+					<img :src="ms[i-1].img"/>
+					<p>{{ms[i-1].t}}</p>
       </li>
     </ul>
+    <h2>
+      <a href="/hot">
+        <i class="i_tnext"></i>
+        <b>即將上映（46部）</b>
+      </a>
+    </h2>
   </div>
 </div>
 </template>
@@ -29,14 +36,17 @@ import axios from "axios";
 export default {
   data() {
     return {
-
+			mslength:null,
+			ms:[],
     }
   },
   mounted() {
-    axios.get("/Service/callback.mi/Showtime/LocationMovies.api?locationId=291&t=201841717221065862")
+    axios.get("/Service/callback.mi/Showtime/LocationMovies.api?locationId=291")
     .then(res=>{
-      console.log(res.data);
+      console.log(res.data.ms);
       //this.datalist= res.data.data.films
+      this.mslength = res.data.ms.length;
+      this.ms = res.data.ms;
     })
   }
 
@@ -102,38 +112,48 @@ export default {
         }
     }
 
-    //hotindex
+    /*//hotindex*/
     .hotindex {
         box-sizing: border-box;
         padding: 0.25rem 0.75rem 0.75rem;
         position: relative;
         zoom: 1;
         h2{
-
-
-        a {
-            display: block;
-            line-height: 2rem;
-            position: relative;
-            b {
-                font-size: 1.4rem;
-                color: #333;
-            }
-            .i_tnext {
-                width: 1.4rem;
-                height: 0.8rem;
-                position: absolute;
-                right: 0;
-                top: 50%;
-                margin-top: -0.4rem;
-                overflow: hidden;
-                line-height: 11rem;
-                background: #fff url("http://static1.mtime.cn/html5/20180208104315/images/2014/i-tmore.png") no-repeat center center;
-                background-size: auto 0.8rem;
-                -webkit-transform: rotate(-90deg);
-            }
+       a {
+        	display: block;
+        	line-height: 2rem;
+        	position: relative;
+        	b {
+        		font-size: 1.4rem;
+        		color: #333;
+        	}
+        	.i_tnext {
+        		width: 1.4rem;
+        		height: 0.8rem;
+        		position: absolute;
+        		right: 0;
+        		top: 50%;
+        		margin-top: -0.4rem;
+        		overflow: hidden;
+        		line-height: 11rem;
+        		background: #fff url("http://static1.mtime.cn/html5/20180208104315/images/2014/i-tmore.png") no-repeat center center;
+        		background-size: auto 0.8rem;
+        		-webkit-transform: rotate(-90deg);
+        	}
         }
-      }
+       }
+       ul{
+       	display: flex;
+       	justify-content: space-around;
+       	flex-wrap: wrap;
+       	li{
+       		width: 23%;
+       		img{
+       			width: 100%;
+       			height: 110px;
+       		}
+       	}
+       }
     }
 }
 </style>
