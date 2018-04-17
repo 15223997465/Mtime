@@ -1,23 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+<div id="app">
+  <mynav></mynav>
+  <section>
+    <router-view></router-view>
+  </section>
+  <myfooter></myfooter>
+</div>
 </template>
 
 <script>
+import mynav from "./components/common/nav"
+import myfooter from "./components/common/footer"
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    mynav,
+    myfooter
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+* {
+    margin: 0;
+    padding: 0;
+}
+body,
+html {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
 }
 </style>

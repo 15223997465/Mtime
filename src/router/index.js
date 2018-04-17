@@ -14,7 +14,7 @@ import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
 Vue.use(Router)
 
-export default router = new Router({
+const router = new Router({
   mode: "hash", //默认值是hash
   routes: [
     //主页
@@ -53,8 +53,8 @@ export default router = new Router({
 
     //发现
     {
-      path: "/vews",
-      component: VewsComponent
+      path: "/news",
+      component: NewsComponent
     },
     {
       path: "/trailer",
@@ -76,3 +76,4 @@ export default router = new Router({
     }
   ]
 })
+export default router;
