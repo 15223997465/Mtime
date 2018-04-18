@@ -4,7 +4,7 @@
       <ul class="lilist">
         <router-link tag="li" to="/home" activeClass="active">首页</router-link>
         <router-link tag="li" to="/theater/291" activeClass="active">购票</router-link>
-        <router-link tag="li" to="/news" activeClass="active">发现</router-link>
+        <router-link tag="li" to="/find" activeClass="active">发现</router-link>
         <router-link tag="li" to="/login" activeClass="active">我的</router-link>
       </ul>
     </div>

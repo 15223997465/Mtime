@@ -15,11 +15,12 @@ module.exports = {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
         changeOrigin: true,
-        // pathRewrite: {
-        //     '^/v4/api': '/v4/api'
-        //   }
-        //   https://m.mtime.cn/Service/callback.mi/Showtime/LocationMovies.api?locationId=291&t=201841717221065862
-      }
+      },
+    	'/api': {
+              target: 'https://ticket-m.mtime.cn',
+              host: 'ticket-m.mtime.cn',
+              changeOrigin:true,
+          }
     },
 
     // Various Dev Server settings

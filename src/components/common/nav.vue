@@ -4,7 +4,7 @@
       <router-link tag="li" to="/home"><img src="../../../static/logo_mtime.png"/></router-link>
       <router-link tag="li" to="/home" activeClass="active">首页</router-link>
       <router-link tag="li" to="/theater/291" activeClass="active">购票</router-link>
-      <router-link tag="li" to="/news" activeClass="active">发现</router-link>
+      <router-link tag="li" to="/find" activeClass="active">发现</router-link>
       <router-link tag="li" to="/login"><i class="iconfont icon-accountfilling"></i></router-link>
     </ul>
   </div>

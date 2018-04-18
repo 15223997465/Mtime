@@ -52,11 +52,11 @@ const router = new Router({
 			component: RegisterComponent
 		},
 
-		//发现
+	
 		{
 			path: "/find",
 			component: FindComponent,
-			chilren: [{
+			children: [{
 					path: "news",
 					component: NewsComponent
 				},
@@ -75,10 +75,10 @@ const router = new Router({
 			]
 		},
 
-		//		{
-		//			path: "*",
-		//			redirect: "/home"
-		//		}
+		{
+			path: "*",
+			redirect: "/home"
+		}
 	]
 })
 export default router;
