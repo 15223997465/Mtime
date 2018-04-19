@@ -7,22 +7,22 @@
 		<router-link tag="li" to="/find/trailer" activeClass="active">影评</router-link>
 
 	</ul>
-	
 
-		<router-view></router-view>	
+
+		<router-view></router-view>
 </div>
 </template>
 
 <script>
 	import axios from "axios";
-	
+
 	export default{
 		data(){
 			return {
-			
-			
+
+
 			}
-			
+
 		},
 		methods:{
 			/*tab(index){
@@ -32,17 +32,11 @@
 		},
 		component:{
 
-			
+
 		},
-		
+
 		mounted(){
 			/*ajax请求数据,调用完后本身是一个promise对象*/
-			axios.get("/api/proxy/ticket/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=974&_=1523962627531")
-			.then(res=>{ 
-				console.log(res.data)
-			}).catch(err=>{
-				console.log("错")
-			})
 		}
 	}
 </script>
@@ -60,7 +54,7 @@ html,body,ul{
 		height: 3rem;
 		background:#FAFAFA;
 		li{
-			
+
 			text-align: center;
 			list-style: none;
 			flex: 1;

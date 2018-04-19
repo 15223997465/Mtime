@@ -1,11 +1,11 @@
 <template>
-<div id="app">
+	<div id="app">
 		<mynav></mynav>
 		<section>
 			<router-view></router-view>
 		</section>
 		<myfooter></myfooter>
-		</div>
+	</div>
 
 </template>
 
@@ -27,21 +27,33 @@
 </script>
 
 <style lang="scss">
-	
-	html,body,li,p,ul,h1,h2,h3,h4{
+	html,
+	body,
+	li,
+	p,
+	ul,
+	h1,
+	h2,
+	h3,
+	h4 {
 		margin: 0;
 		padding: 0;
+	}
+	html{
+		font-size: 100px;
 	}
 	body {
 		width: 100%;
 		height: 100%;
 	}
-	li{
+	li {
 		list-style: none;
 	}
-	a{
+	
+	a {
 		text-decoration: none;
 	}
+	
 	#app {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;

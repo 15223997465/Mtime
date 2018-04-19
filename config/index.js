@@ -16,11 +16,13 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true,
       },
-    	'/api': {
-              target: 'https://ticket-m.mtime.cn',
-              host: 'ticket-m.mtime.cn',
-              changeOrigin:true,
-          }
+
+      '/Service/callback.mi/PageSubArea': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true,
+      },
+      //http: //m.mtime.cn/Service/callback.mi/PageSubArea/GetFirstPageAdvAndNews.api?t=2018419035368418
     },
 
     // Various Dev Server settings
