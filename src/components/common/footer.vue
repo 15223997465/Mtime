@@ -38,9 +38,9 @@ footer {
 
             li {
                 flex: 1;
-                line-height: 3rem;
-                font-size: 0.9375rem;
-                height: 3rem;
+                line-height: .5rem;
+                font-size: 0.23rem;
+                height: .5rem;
             }
         }
     }
@@ -55,7 +55,9 @@ footer {
                 display: block;
                 width: 25%;
                 text-align: center;
-                line-height: 3rem;
+                line-height: .5rem;
+                height: .5rem;
+                font-size: .16rem;
                 a {
                     color: #333;
                 }
@@ -65,17 +67,17 @@ footer {
     .copy {
         color: #cdcdcd;
         text-align: center;
-        font-size: 0.8rem;
+        font-size: 0.14rem;
         background-color: #f6f6f6;
 
         .img {
             text-indent: -3943434px;
             background: url("../../../static/logo_mtime.png") no-repeat center center;
-            background-size: auto 2rem;
-            height: 1rem;
+            background-size: auto .32rem;
+            height: .23rem;
             color: #cdcdcd;
             text-align: center;
-            padding-bottom: 0.5em;
+            padding-bottom: 0.05em;
 
         }
     }

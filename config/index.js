@@ -16,22 +16,21 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true,
       },
-    	'/api': {
-              target: 'https://ticket-m.mtime.cn',
-              host: 'ticket-m.mtime.cn',
-              changeOrigin:true,
+      '/api': {
+        target: 'https://ticket-m.mtime.cn',
+        host: 'ticket-m.mtime.cn',
+        changeOrigin: true,
 
-              // pathRewrite: {
-              //     '^/v4/api': '/v4/api'
-              //   }
-          },
-    	'/Service':{
-    					target:'https://m.mtime.cn',
-    					host:'m.mtime.cn',
-    					changeOrigin:true
-    	}
+        // pathRewrite: {
+        //     '^/v4/api': '/v4/api'
+        //   }
+      },
+      '/Service': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      }
 
-          }
 
     },
 
