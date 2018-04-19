@@ -1,5 +1,6 @@
 <template>
 	<div id="news">
+
 		<div id="firstNews" v-if="topNews.news">
 			<img :src="topNews.news.imageUrl"/>
 		</div>
@@ -34,11 +35,13 @@
 		</div>
 		
 		
+
 	</div>
 	
 </template>
 
 <script>
+
 	import axios from "axios";
 	import "../assets/icon-font/iconfont.css";
 	

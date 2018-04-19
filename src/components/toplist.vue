@@ -1,4 +1,5 @@
 <template>
+
 	<div id="tops">
 		<div id="firstTop" v-if="topTops.topList">
 			<img :src="topTops.topList.imageUrl"/>
@@ -11,6 +12,8 @@
 		
 	</div>
 	
+
+
 </template>
 
 <script>

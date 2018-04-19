@@ -52,7 +52,7 @@ const router = new Router({
 			component: RegisterComponent
 		},
 
-		//发现
+	
 		{
 			path: "/find",
 			component: FindComponent,
@@ -79,10 +79,13 @@ const router = new Router({
 			]
 		},
 
+
 				{
 					path: "*",
 					redirect: "/home"
 				}
+
+
 	]
 });
 export default router;

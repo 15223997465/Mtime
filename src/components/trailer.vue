@@ -88,12 +88,12 @@
 				this.videoUrl=url;
 				this.scrolltop=document.documentElement.scrollTop||document.body.scrollTop
 				document.documentElement.scrollTop=0;
-				document.body.style.overflow='hidden';
+				document.documentElement.style.overflow='hidden';
 			},
 			closeVideo:function(){
 				this.compShow=false;
 				document.documentElement.scrollTop=this.scrolltop;
-				document.body.style.overflow='auto';
+				document.documentElement.style.overflow='auto';
 			}
 				
 			

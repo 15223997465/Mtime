@@ -1,4 +1,7 @@
 <template>
+	<div id="">
+		login
+	</div>
 </template>
 
 <script>

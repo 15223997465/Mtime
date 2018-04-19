@@ -11,10 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      '/Service/callback.mi/Showtime': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true,
+      },
     	'/api': {
               target: 'https://ticket-m.mtime.cn',
               host: 'ticket-m.mtime.cn',
               changeOrigin:true,
+
               // pathRewrite: {
               //     '^/v4/api': '/v4/api'
               //   }
@@ -24,6 +30,9 @@ module.exports = {
     					host:'m.mtime.cn',
     					changeOrigin:true
     	}
+
+          }
+
     },
 
     // Various Dev Server settings
@@ -34,7 +43,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

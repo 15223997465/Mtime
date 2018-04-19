@@ -1,4 +1,5 @@
 <template>
+
 	<div>
 	<ul id="find">
 		<router-link tag="li" to="/find/news" activeClass="active">新闻</router-link>
@@ -11,6 +12,9 @@
 		</div>
 	<router-view></router-view>
 	</div>
+
+
+
 </template>
 
 <script>
@@ -55,10 +59,6 @@
 				},1);
 				
 			}
-		},
-		mounted(){
-			window.addEventListener("scroll",this.handleScroll);
-			
 		}
 	}
 </script>
