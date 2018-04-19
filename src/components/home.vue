@@ -75,10 +75,10 @@ export default {
   },
   methods:{
     nowplaying(){
-      router.push("/homes")
+      router.push("/homes/nowplaying")
     },
     willcome(){
-      router.push("/homes")
+      router.push("/homes/willcome")
     }
   }
 
