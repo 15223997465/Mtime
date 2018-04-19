@@ -36,7 +36,7 @@ const router = new Router({
 
 		//购票&&登录注册
 		{
-			path: "/movie/:id",
+			path: "/movie",
 			component: MovieComponent,
 		},
 		{
