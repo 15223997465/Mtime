@@ -56,7 +56,7 @@ const router = new Router({
 		{
 			path: "/find",
 			component: FindComponent,
-			chilren: [{
+			children: [{
 					path: "news",
 					component: NewsComponent
 				},
@@ -71,14 +71,18 @@ const router = new Router({
 				{
 					path: "review",
 					component: ReviewComponent
+				},
+				{
+					path: '',    
+           			component: NewsComponent  
 				}
 			]
 		},
 
-		//		{
-		//			path: "*",
-		//			redirect: "/home"
-		//		}
+				{
+					path: "*",
+					redirect: "/home"
+				}
 	]
-})
+});
 export default router;
