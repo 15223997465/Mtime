@@ -1,53 +1,85 @@
 <template>
 <div class="home">
-  <div class="movie_search">
-    <div class="hea_search">
-      <div class="table_v_c">
-        <div class="cityshow"><b>重庆</b><i class="i_block i_city"></i></div>
-        <p class="input td"><a href="#!/search/"><span>影片/影院/影人，任你搜</span></a></p>
-      </div>
-    </div>
-  </div>
+  <homeSearch></homeSearch>
+  <!-- hot&&comming -->
   <div class="hotindex">
-    <h2>
-      <a href="/hot">
+    <h2 class="hoth2" @click="nowplaying()">
+      <a href="javascript:void(0);">
         <i class="i_tnext"></i>
         <b>正在热映（46部）</b>
       </a>
     </h2>
     <ul v-if="mslength">
       <li v-for="i in 8">
-					<img :src="ms[i-1].img"/>
-					<p>{{ms[i-1].t}}</p>
+        <img :src="ms[i-1].img" />
+        <p>{{ms[i-1].t}}</p>
       </li>
     </ul>
-    <h2>
-      <a href="/hot">
+    <h2 class="cominghot" @click="willcome()">
+      <a href="javascript:void(0);">
         <i class="i_tnext"></i>
         <b>即將上映（46部）</b>
       </a>
     </h2>
+  </div>
+  <!-- todayhot -->
+  <div class="todayhot">
+    <h2>今日热点</h2>
+    <ul>
+      <li v-for = "(data,index) in hotpoints" v-if ="hotpoints">
+        <img :src="data.img" alt="">
+        <div class="content">
+          <h3>{{data.title}}</h3>
+          <p class="info">{{data.desc}}</p>
+          <p class="time">{{date[index].getFullYear()}}-{{date[index].getMonth()+1}}-{{date[index].getDate()}}
+          {{date[index].getHours()}}:{{date[index].getMinutes()}}:{{date[index].getSeconds()}}</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 </template>
 
 <script>
 import axios from "axios";
+import homeSearch from "./common/homesearch";
+import router from "../router"
 export default {
   data() {
     return {
-			mslength:null,
-			ms:[],
+      mslength: null,
+      ms: [],
+      hotpoints:[],
+      date:[],
     }
   },
+  components:{
+    homeSearch,
+  }
+  ,
   mounted() {
     axios.get("/Service/callback.mi/Showtime/LocationMovies.api?locationId=291")
     .then(res=>{
-      console.log(res.data.ms);
       //this.datalist= res.data.data.films
       this.mslength = res.data.ms.length;
       this.ms = res.data.ms;
     })
+    axios.get("/Service/callback.mi/PageSubArea/GetFirstPageAdvAndNews.api?t=2018419035368418")
+    .then(res=>{
+      this.hotpoints = res.data.hotPoints;
+      for(var index in this.hotpoints){
+        this.date.push(new Date(this.hotpoints[index].publishTime*1000));
+      }
+    });
+
+  },
+  methods:{
+    nowplaying(){
+      router.push("/homes/nowplaying")
+    },
+    willcome(){
+      router.push("/homes/willcome")
+    }
   }
 
 }
@@ -56,113 +88,101 @@ export default {
 <style lang="scss" scoped>
 .home {
     box-sizing: border-box;
-
-    //search
-    .hea_search {
-        background: #f6f6f6;
-        border-bottom: 1px solid #d8d8d8;
+    //hot&&comming
+    .hotindex {
+        box-sizing: border-box;
+        padding: 0.04rem 0.12rem 0.12rem;
         position: relative;
-        height: 100%;
-        z-index: 3;
-        .table_v_c {
-            -webkit-box-align: center;
-            width: 100%;
-            display: -webkit-box;
-            .cityshow {
-                margin: 0 1.5rem;
-                height: 3.5rem;
-                line-height: 3.5rem;
+        zoom: 1;
+        border-bottom: 0.14rem solid #f6f6f6;
+        .cominghot {
+            border-top: 0.01rem solid #d8d8d8;
+        }
+        h2 {
+            font-size: 0.2rem;
+            line-height: 0.4rem;
+            text-align: left;
+            a {
+                display: block;
+                line-height: 0.4rem;
+                position: relative;
                 b {
-                    font-size: 1.6em;
-                    font-weight: normal;
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-top: -0.25rem;
+                    font-size: 0.2rem;
+                    color: #333;
                 }
-                .i_city {
-                    width: 0.9em;
-                    height: 0.5em;
-                    margin-left: 0.5em;
-                    margin-top: 0.3em;
-                    background: url("http://static1.mtime.cn/html5/20180208104315/images/2014/i_city.png") no-repeat;
-                    background-size: cover;
-                    display: inline-block;
-                    vertical-align: middle;
+                .i_tnext {
+                    width: 0.25rem;
+                    height: 0.12rem;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    margin-top: -0.06rem;
+                    overflow: hidden;
+                    line-height: 0.4rem;
+                    background: #fff url("http://static1.mtime.cn/html5/20180208104315/images/2014/i-tmore.png") no-repeat center center;
+                    background-size: auto 0.12rem;
+                    -webkit-transform: rotate(-90deg);
                 }
             }
-            .input {
-                margin-left: 0;
-                font-size: 1.4rem;
-                height: 2.4rem;
-                line-height: 1.2rem;
-                padding: 0 1.8rem 0 2rem;
-                border-radius: 0.5rem;
-                background: #fff url("http://static1.mtime.cn/html5/20180208104315/images/2014/search_ico_01.png") no-repeat 0.5em center;
-                background-size: 1.3rem 1.3rem;
-                position: relative;
-                z-index: 0;
-                span {
-                    display: inline-block;
-                    vertical-align: middle;
-                    color: #777;
-                    line-height: 2.4rem;
-                    font-size: 1rem;
+        }
+        ul {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            li {
+                width: 23%;
+                font-size: 0.15rem;
+                margin-bottom: 0.2rem;
+                img {
+                    width: 100%;
+                    height: 1.1rem;
                 }
             }
         }
     }
-
-    /*//hotindex*/
-    .hotindex {
+    // todayhot
+    .todayhot {
         box-sizing: border-box;
-        padding: 0.25rem 0.75rem 0.75rem;
-        position: relative;
-        zoom: 1;
-        h2{
-       a {
-        	display: block;
-        	line-height: 2rem;
-        	position: relative;
-        	b {
-        		font-size: 1.4rem;
-        		color: #333;
-        	}
-        	.i_tnext {
-        		width: 1.4rem;
-        		height: 0.8rem;
-        		position: absolute;
-        		right: 0;
-        		top: 50%;
-        		margin-top: -0.4rem;
-        		overflow: hidden;
-        		line-height: 11rem;
-        		background: #fff url("http://static1.mtime.cn/html5/20180208104315/images/2014/i-tmore.png") no-repeat center center;
-        		background-size: auto 0.8rem;
-        		-webkit-transform: rotate(-90deg);
-        	}
+        padding: 0.06rem 0.12rem 0;
+        text-align: left;
+        h2 {
+            line-height: 0.4rem;
+            font-size: 0.2rem;
+            text-align: left;
         }
-       }
-       ul{
-       	display: flex;
-       	justify-content: space-around;
-       	flex-wrap: wrap;
-       	li{
-       		width: 23%;
-       		img{
-       			width: 100%;
-       			height: 110px;
-       		}
-       	}
-       }
+        li {
+            overflow: hidden;
+            width: 100%;
+            padding: 0.15rem 0;
+						border-bottom: 0.01rem solid #777;
+            img {
+                width: 35%;
+                height: 0.9rem;
+                float: left;
+            }
+            .content {
+                width: 60%;
+                float: right;
+                h3 {
+                    font-size: 0.2rem;
+                    line-height: 0.24rem;
+                    color: #333;
+                }
+                .info {
+                    font-size: 0.16rem;
+                    line-height: 0.22rem;
+                    color: #777;
+                }
+                .time {
+                    font-size: 0.16rem;
+                    line-height: 0.22rem;
+                    color: #777;
+                }
+            }
+        }
+				li:first-child{
+					padding-top:0;
+				}
     }
 }
 </style>
-=======
-</template>
-
-<script>
-</script>
-
-<style>
-</style>
->>>>>>> 629e14c6f8382770ee7509637f8ab79e91593428

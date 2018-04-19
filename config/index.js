@@ -11,16 +11,25 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-    	'/api': {
-              target: 'https://ticket-m.mtime.cn',
-              host: 'ticket-m.mtime.cn',
-              changeOrigin:true,
-         },
-       '/Service': {
-              target: 'https://m.mtime.cn',
-              host: 'm.mtime.cn',
-              changeOrigin:true,
-       },
+      '/Service/callback.mi/Showtime': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true,
+      },
+      '/api': {
+        target: 'https://ticket-m.mtime.cn',
+        host: 'ticket-m.mtime.cn',
+        changeOrigin: true,
+
+        // pathRewrite: {
+        //     '^/v4/api': '/v4/api'
+        //   }
+      },
+      '/Service': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      }
     },
 
     // Various Dev Server settings

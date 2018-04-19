@@ -31,12 +31,12 @@ export default {
 
     li{
       flex: 1;
-      line-height: 3.21875rem;
-      font-size: .9375rem;
-      height: 3.21875rem;
+      line-height: .5rem;
+      font-size: 0.2rem;
+      height: 0.5rem;
       img{
-        width: 4.90625rem;
-        height: 1.5625rem;
+        width: 0.6rem;
+        height: 0.2rem;
         vertical-align: middle;
         display:inline-block;
       }
@@ -44,7 +44,7 @@ export default {
     i{
       flex: 1;
       color: white;
-      line-height: 3.21875rem;
+      line-height: 0.5rem;
 
     }
     .active{

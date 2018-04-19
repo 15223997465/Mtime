@@ -2,9 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import HomeComponent from "../components/home"
-import HotComponent from "../components/hot"
+import HotComponent from "../components/nowplaying"
 import ComingComponent from "../components/coming"
-import MovieComponent from "../components/movie"
+import HomemovieComponent from "../components/homemovie"
+import HomesComponent from "../components/homes"
 import TheaterComponent from "../components/theater"
 import LoginComponent from "../components/login"
 import RegisterComponent from "../components/register"
@@ -17,24 +18,31 @@ import ReviewComponent from "../components/review"
 Vue.use(Router)
 
 const router = new Router({
-	mode: "hash", //默认值是hash
-	routes: [
-		//主页
-		{
-			path: "/home",
-			component: HomeComponent,
-			children: [{
-					path: "hot",
-					component: HotComponent
-				},
-				{
-					path: "coming",
-					component: ComingComponent
-				}
-			]
-		},
+  mode: "hash", //默认值是hash
+  routes: [
+    //主页
+    {
+      path: "/home",
+      component: HomeComponent,
+    },
+    {
+      path: "/homes",
+      component: HomesComponent,
+      children: [{
+          path: "nowplaying",
+          component: HotComponent
+        },
+        {
+          path: "willcome",
+          component: ComingComponent
+        }
+      ]
+    },
+    {
+      path: "/homemovie",
+      component: HomemovieComponent
+    },
 
-		//购票&&登录注册
 		{
 			path: "/movie",
 			component: MovieComponent,
@@ -52,40 +60,53 @@ const router = new Router({
 			component: RegisterComponent
 		},
 
-	
-		{
-			path: "/find",
-			component: FindComponent,
-			children: [{
-					path: "news",
-					component: NewsComponent
-				},
-				{
-					path: "trailer",
-					component: TrailerComponent
-				},
-				{
-					path: "toplist",
-					component: ToplistComponent
-				},
-				{
-					path: "review",
-					component: ReviewComponent
-				},
-				{
-					path: '',    
-           			component: NewsComponent  
-				}
-			]
-		},
+    {
+      path: "/theater/:id",
+      component: TheaterComponent,
+    },
+    {
+      path: "/login",
+      component: LoginComponent
+    },
+    {
+      path: "/register",
+      component: RegisterComponent
+    },
 
 
-				{
-					path: "*",
-					redirect: "/home"
-				}
+    {
+      path: "/find",
+      component: FindComponent,
+      children: [{
+          path: "news",
+          component: NewsComponent
+        },
+        {
+          path: "trailer",
+          component: TrailerComponent
+        },
+        {
+          path: "toplist",
+          component: ToplistComponent
+        },
+        {
+          path: "review",
+          component: ReviewComponent
+        },
+        {
+          path: '',
+          component: NewsComponent
+        }
+      ]
+    },
 
 
-	]
+    {
+      path: "*",
+      redirect: "/home"
+    }
+
+
+  ]
 });
 export default router;
