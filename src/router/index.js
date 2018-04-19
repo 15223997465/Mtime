@@ -71,14 +71,21 @@ const router = new Router({
 				{
 					path: "review",
 					component: ReviewComponent
+				},
+				{
+					path: '',    
+           			component: NewsComponent  
 				}
 			]
 		},
 
-		{
-			path: "*",
-			redirect: "/home"
-		}
+
+				{
+					path: "*",
+					redirect: "/home"
+				}
+
+
 	]
-})
+});
 export default router;

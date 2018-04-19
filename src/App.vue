@@ -16,7 +16,6 @@
 		name: 'App',
 		data() {
 			return {
-
 			}
 		},
 		components: {
@@ -27,14 +26,17 @@
 </script>
 
 <style lang="scss">
-	
 	html,body,li,p,ul,h1,h2,h3,h4{
 		margin: 0;
 		padding: 0;
 	}
+	html{
+		font-size: 100px;
+	}
 	body {
 		width: 100%;
 		height: 100%;
+		
 	}
 	li{
 		list-style: none;
