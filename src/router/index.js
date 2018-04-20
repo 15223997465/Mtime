@@ -14,7 +14,8 @@ import NewsComponent from "../components/news"
 import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
-
+import LazyRender from 'vue-lazy-render'
+Vue.use(LazyRender)
 Vue.use(Router)
 
 const router = new Router({

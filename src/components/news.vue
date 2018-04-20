@@ -54,7 +54,8 @@
 				listNews:[],
 				page:1,
 				bottomInfo:"",
-				state:true
+				state:true,
+				maxPage:0
 				
 				
 				
@@ -66,7 +67,7 @@
 				console.log(this.topNews);
 			},
 			handleMore:function (){		
-				if(this.page>=10)
+				if(this.page>=this.maxPage)
 				{	
 					this.bottomInfo="没有更多新闻了";
 				}
@@ -88,6 +89,7 @@
 						this.state=true;
 						var timer=setTimeout(()=>{this.listNews=[...this.listNews,...res.data.newsList] ;
 							this.state=false;
+							this.maxPage=res.data.pageCount;
 						this.bottomInfo="加载更多";	
 						},1000);
 						
@@ -200,7 +202,7 @@ html,body,h2,p{
 		#more{
 			padding-top: 0.15rem;
 			padding-bottom: 0.15rem;
-			height: 0.3rem;
+			height: 100%;
 		    font-size: 0.18rem;
 		    line-height: 0.3rem;
 		    width: 100%;

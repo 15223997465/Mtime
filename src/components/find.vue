@@ -23,6 +23,7 @@
 	export default{
 		
 		data(){
+			window.addEventListener("scroll",this.handleScroll);
 			return {
 				scrollState:false
 			}
