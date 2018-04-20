@@ -43,7 +43,22 @@ const router = new Router({
       component: HomemovieComponent
     },
 
-    //购票&&登录注册
+		{
+			path: "/movie",
+			component: MovieComponent,
+		},
+		{
+			path: "/theater/:id",
+			component: TheaterComponent,
+		},
+		{
+			path: "/login",
+			component: LoginComponent
+		},
+		{
+			path: "/register",
+			component: RegisterComponent
+		},
 
     {
       path: "/theater/:id",
