@@ -51,7 +51,7 @@ module.exports = {
               host: 'localhost:3000',
               changeOrigin:true,
        }
-
+,
       '/Service/callback.mi/Movie/HotLongComments': {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
