@@ -7,6 +7,7 @@ import ComingComponent from "../components/coming"
 import HomemovieComponent from "../components/homemovie"
 import NewsDetailComponent from "../components/newsdetail"
 import HomesComponent from "../components/homes"
+import MovieComponent from "../components/movie"
 import TheaterComponent from "../components/theater"
 import LoginComponent from "../components/login"
 import RegisterComponent from "../components/register"
@@ -15,13 +16,9 @@ import NewsComponent from "../components/news"
 import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
-import MovieComponent from "../components/movie"
-<<<<<<< HEAD
+import MeComponent from "../components/me"
 import LazyRender from 'vue-lazy-render'
 Vue.use(LazyRender)
-=======
-
->>>>>>> c82ee33c0656fd0a5164dc77820ffdf97c95f608
 Vue.use(Router)
 
 const router = new Router({
@@ -49,15 +46,6 @@ const router = new Router({
       path: "/homemovie/:id",
       component: HomemovieComponent
     },
-
-    {
-      path: "/movie",
-      component: MovieComponent,
-    },
-    {
-      path: "/theater/:id",
-      component: TheaterComponent,
-    },
     {
       path: "/login",
       component: LoginComponent
@@ -66,22 +54,29 @@ const router = new Router({
       path: "/register",
       component: RegisterComponent
     },
-
     {
-      path: "/theater/:id",
-      component: TheaterComponent,
-    },
-    {
-      path: "/login",
-      component: LoginComponent
-    },
-    {
-      path: "/register",
-      component: RegisterComponent
+      path: "/me",
+      component: MeComponent
     },
 		{
 			path:"/find/news/newsdetail/:id",
 			component: NewsDetailComponent
+		},
+		{
+			path: "/movie",
+			component: MovieComponent,
+		},
+		{
+			path: "/theater/:cinemaId",
+			component: TheaterComponent,
+		},
+		{
+			path: "/login",
+			component: LoginComponent
+		},
+		{
+			path: "/register",
+			component: RegisterComponent
 		},
     {
       path: "/find",

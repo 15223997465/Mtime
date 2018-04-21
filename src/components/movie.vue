@@ -75,7 +75,7 @@ export default {
 		}
 	},
 	mounted() {//ajax请求数据,调用完后本身是一个promise对象
-		axios.get("/api/proxy/ticket/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=974&_=1523962627531")
+		axios.get("/api/proxy/ticket/OnlineLocationCinema/OnlineCinemasByCity.api?locationId=291&_=1524295085813")
 			.then(res => {				
 				this.looplist=res.data;
 			}).catch(err => {

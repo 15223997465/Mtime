@@ -29,15 +29,7 @@ module.exports = {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
         changeOrigin: true
-<<<<<<< HEAD
-      }
-      ,
-      '/restapi': {
-        target: 'https://h5.ele.me',
-        host: 'h5.ele.me',
-        changeOrigin: true
-      }
-=======
+      
       },
       '/Service/callback.mi/Movie/MovieComingNew': {
         target: 'https://m.mtime.cn',
@@ -49,7 +41,16 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       },
->>>>>>> c82ee33c0656fd0a5164dc77820ffdf97c95f608
+       '/Mregist': {
+              target: 'http://localhost:3000',
+              host: 'localhost:3000',
+              changeOrigin:true,
+       },
+       '/Mlogin': {
+              target: 'http://localhost:3000',
+              host: 'localhost:3000',
+              changeOrigin:true,
+       }
     },
 
     // Various Dev Server settings
