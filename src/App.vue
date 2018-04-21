@@ -4,7 +4,7 @@
 		<section>
 			<router-view></router-view>
 		</section>
-		<lazy-render :time="2000">
+		<lazy-render :time="4000">
 			<myfooter></myfooter>
 		</lazy-render>
 		</div>

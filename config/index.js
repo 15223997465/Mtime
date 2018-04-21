@@ -30,8 +30,12 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       }
-
-
+      ,
+      '/restapi': {
+        target: 'https://h5.ele.me',
+        host: 'h5.ele.me',
+        changeOrigin: true
+      }
     },
 
     // Various Dev Server settings
@@ -42,7 +46,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-
+    
     /**
      * Source Maps
      */
