@@ -40,6 +40,16 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       },
+      '/Service/callback.mi/Movie/HotLongComments': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
+      '/Service/callback.mi/Showtime/MovieComments': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
     },
 
     // Various Dev Server settings

@@ -2,7 +2,7 @@
 <div class="nowplaying">
   <ul>
     <li v-if="ms" v-for="data in ms">
-      <img :src="data.img" alt="">
+      <img :src="data.img" alt="" @click="homemovie(data.id)">
       <div class="info">
         <h3>
             <b>{{data.t}}</b>
@@ -28,6 +28,7 @@
 
 <script>
 import axios from "axios";
+import router from "../router"
 export default {
   data() {
     return {
@@ -41,6 +42,11 @@ export default {
         this.mslength = res.data.ms.length;
         this.ms = res.data.ms;
       })
+  },
+  methods:{
+    homemovie(id){
+      router.push(`/homemovie/${id}`);
+    }
   }
 }
 </script>
