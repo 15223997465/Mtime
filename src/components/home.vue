@@ -10,7 +10,7 @@
       </a>
     </h2>
     <ul v-if="mslength">
-      <li v-for="i in 8">
+      <li v-for="i in 8" @click="homemovie(ms[i-1].id)">
         <img :src="ms[i-1].img" />
         <p>{{ms[i-1].t}}</p>
       </li>
@@ -79,6 +79,9 @@ export default {
     },
     willcome(){
       router.push("/homes/willcome")
+    },
+    homemovie(id){
+      router.push(`/homemovie/${id}`);
     }
   }
 

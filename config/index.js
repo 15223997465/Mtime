@@ -29,7 +29,17 @@ module.exports = {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
         changeOrigin: true
-      }
+      },
+      '/Service/callback.mi/Movie/MovieComingNew': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
+      '/Service/callback.mi/movie/Detail': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
     },
 
     // Various Dev Server settings
@@ -40,7 +50,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

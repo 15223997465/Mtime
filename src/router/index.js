@@ -14,6 +14,7 @@ import NewsComponent from "../components/news"
 import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
+import MovieComponent from "../components/movie"
 
 Vue.use(Router)
 
@@ -39,26 +40,26 @@ const router = new Router({
       ]
     },
     {
-      path: "/homemovie",
+      path: "/homemovie/:id",
       component: HomemovieComponent
     },
 
-		{
-			path: "/movie",
-			component: MovieComponent,
-		},
-		{
-			path: "/theater/:id",
-			component: TheaterComponent,
-		},
-		{
-			path: "/login",
-			component: LoginComponent
-		},
-		{
-			path: "/register",
-			component: RegisterComponent
-		},
+    {
+      path: "/movie",
+      component: MovieComponent,
+    },
+    {
+      path: "/theater/:id",
+      component: TheaterComponent,
+    },
+    {
+      path: "/login",
+      component: LoginComponent
+    },
+    {
+      path: "/register",
+      component: RegisterComponent
+    },
 
     {
       path: "/theater/:id",
