@@ -248,6 +248,7 @@ html,body,h2,p,h3{
 	#more{
 			padding-top: 0.15rem;
 			padding-bottom: 0.15rem;
+			
 		    font-size: 0.18rem;
 		    line-height: 0.3rem;
 		    width: 100%;

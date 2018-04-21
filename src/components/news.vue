@@ -7,7 +7,8 @@
 		<div id="tabNews">
 			<div v-for="(item,index) in listNews" id="forBox" :key="item.id">
 				<div v-if="item.type==1" id="frameBox" >
-					<h2>{{item.title}}</h2>
+					<h2 @click="toDetail(item.id)">{{item.title}}</h2>
+					
 					<div id="imgbox" v-if="item.images[0]">
 						<div id="itemimg"><img :src="item.images[0].url1"/></div>
 						<div id="itemimg"><img :src="item.images[1].url2"/></div>
@@ -18,12 +19,12 @@
 				</div>
 				<div v-if="item.type==0" id="frameBox">
 					<img :src="item.image" id="minImg"/>
-					<h2>{{item.title}}</h2>
+					<h2 @click="toDetail(item.id)">{{item.title}}</h2>
 					<p>{{((new Date().getDate())-(new Date(item.publishTime*1000).getDate()))*24+new Date().getHours()+8-(new Date(item.publishTime*1000).getHours())}}小时前<b>评论{{item.commentCount}}</b></p>				
 				</div>
 				<div v-if="item.type==2" id="frameBox">
 					<img :src="item.image" id="minImg"/>
-					<h2>{{item.title}}</h2>
+					<h2 @click="toDetail(item.id)">{{item.title}}</h2>
 					<p>{{((new Date().getDate())-(new Date(item.publishTime*1000).getDate()))*24+new Date().getHours()+8-(new Date(item.publishTime*1000).getHours())}}小时前<b>评论{{item.commentCount}}</b></p>
 				</div>
 			</div>
@@ -54,7 +55,8 @@
 				listNews:[],
 				page:1,
 				bottomInfo:"",
-				state:true
+				state:true,
+				maxPage:0
 				
 				
 				
@@ -62,11 +64,14 @@
 			
 		},
 		methods:{
-			onload(){
-				console.log(this.topNews);
+			toDetail(id){
+				this.$router.push({
+					path:`/find/news/newsdetail/${id}`
+				});
+			
 			},
 			handleMore:function (){		
-				if(this.page>=10)
+				if(this.page>=this.maxPage)
 				{	
 					this.bottomInfo="没有更多新闻了";
 				}
@@ -88,6 +93,7 @@
 						this.state=true;
 						var timer=setTimeout(()=>{this.listNews=[...this.listNews,...res.data.newsList] ;
 							this.state=false;
+							this.maxPage=res.data.pageCount;
 						this.bottomInfo="加载更多";	
 						},1000);
 						
@@ -200,7 +206,7 @@ html,body,h2,p{
 		#more{
 			padding-top: 0.15rem;
 			padding-bottom: 0.15rem;
-			height: 0.3rem;
+			height: 100%;
 		    font-size: 0.18rem;
 		    line-height: 0.3rem;
 		    width: 100%;

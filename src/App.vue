@@ -4,7 +4,9 @@
 		<section>
 			<router-view></router-view>
 		</section>
-		<myfooter></myfooter>
+		<lazy-render :time="4000">
+			<myfooter></myfooter>
+		</lazy-render>
 		</div>
 
 </template>
@@ -16,7 +18,10 @@
 		name: 'App',
 		data() {
 			return {
+				footerState:null
 			}
+		},
+		mounted(){
 		},
 		components: {
 			mynav,

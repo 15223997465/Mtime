@@ -14,44 +14,50 @@
 </template>
 
 <script>
-import "../assets/icon-font/iconfont.css";
+	import "../assets/icon-font/iconfont.css";
 
-export default {
+	export default{
 
-  data() {
-    return {
-      scrollState: false
-    }
-  },
-  methods: {
-    handleScroll() {
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      if (scrollTop >= 350) {
-        this.scrollState = true;
-      } else {
-        this.scrollState = false;
-      }
-    },
-    handleTotop() {
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      clearInterval(timer);
-      var timer = setInterval(function() {
-        scrollTop -= 30;
-        if (document.documentElement.scrollTop) {
-          document.documentElement.scrollTop = scrollTop;
-        }
-        if (document.body.scrollTop) {
-          document.body.scrollTop = scrollTop;
-        }
-        if (scrollTop <= 0) {
-          clearInterval(timer);
-          return false;
-        }
-      }, 1);
+		data(){
+			window.addEventListener("scroll",this.handleScroll);
+			return {
+				scrollState:false
+			}
+		},
+		methods:{
+			handleScroll(){
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				if(scrollTop>=350)
+				{
+					this.scrollState=true;
+				}
+				else{
+					this.scrollState=false;
+				}
+			},
+			handleTotop(){
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				clearInterval(timer);
+				var timer=setInterval(function(){
+					scrollTop-=30;
+					if(document.documentElement.scrollTop)
+					{
+						document.documentElement.scrollTop=scrollTop;
+					}
+					if(document.body.scrollTop)
+					{
+						document.body.scrollTop=scrollTop;
+					}
+					if(scrollTop<=0)
+					{
+						clearInterval(timer);
+						return false;
+					}
+				},1);
 
-    }
-  }
-}
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

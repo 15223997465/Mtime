@@ -30,6 +30,11 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       },
+      '/restapi': {
+        target: 'https://h5.ele.me',
+        host: 'h5.ele.me',
+        changeOrigin: true
+      },
       '/Service/callback.mi/Movie/MovieComingNew': {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
@@ -50,6 +55,8 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       },
+
+
     },
 
     // Various Dev Server settings

@@ -5,6 +5,7 @@ import HomeComponent from "../components/home"
 import HotComponent from "../components/nowplaying"
 import ComingComponent from "../components/coming"
 import HomemovieComponent from "../components/homemovie"
+import NewsDetailComponent from "../components/newsdetail"
 import HomesComponent from "../components/homes"
 import TheaterComponent from "../components/theater"
 import LoginComponent from "../components/login"
@@ -15,7 +16,8 @@ import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
 import MovieComponent from "../components/movie"
-
+import LazyRender from 'vue-lazy-render'
+Vue.use(LazyRender)
 Vue.use(Router)
 
 const router = new Router({
@@ -73,14 +75,16 @@ const router = new Router({
       path: "/register",
       component: RegisterComponent
     },
-
-
+    {
+      path: "/find/news/newsdetail/:id",
+      component: NewsDetailComponent
+    },
     {
       path: "/find",
       component: FindComponent,
       children: [{
           path: "news",
-          component: NewsComponent
+          component: NewsComponent,
         },
         {
           path: "trailer",
@@ -106,7 +110,6 @@ const router = new Router({
       path: "*",
       redirect: "/home"
     }
-
 
   ]
 });

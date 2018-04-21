@@ -1,101 +1,93 @@
 <template>
-	<div id="news">
-		<div id="firstNews">
-			<img :src="topNews.imageUrl"/>
+
+	<div id="reviews">
+		<div id="revTop" v-if="topReviews.review">
+			<img :src="topReviews.review.imageUrl" id="retop" :alt="topReviews.review.title"/>
+			<div id="reTitle">
+				<img :src="topReviews.review.posterUrl" id="titleImg"/>
+				<h4>
+					{{topReviews.review.movieName}}
+				</h4>
+				<p>
+					{{topReviews.review.title}}
+				</p>
+				
+			</div>
 		</div>
-		<div id="tabNews">
-			<div v-for="(item,index) in listNews" id="forBox" :key="item.id">
-				<div v-if="item.type==1" id="frameBox" >
-					<h2>{{item.title}}</h2>
-					<div id="imgbox" v-if="item.images[0]">
-						<div id="itemimg"><img :src="item.images[0].url1"/></div>
-						<div id="itemimg"><img :src="item.images[1].url2"/></div>
-						<div id="itemimg"><img :src="item.images[2].url2"/></div>
-						
-					</div>
-					<p>{{((new Date().getDate())-(new Date(item.publishTime*1000).getDate()))*24+new Date().getHours()+8-(new Date(item.publishTime*1000).getHours())}}小时前</p>
-				</div>
-				<div v-if="item.type==0" id="frameBox">
-					<img :src="item.image" id="minImg"/>
-					<h2>{{item.title}}</h2>
-					<p>{{((new Date().getDate())-(new Date(item.publishTime*1000).getDate()))*24+new Date().getHours()+8-(new Date(item.publishTime*1000).getHours())}}小时前<b>评论{{item.commentCount}}</b></p>				
-				</div>
-				<div v-if="item.type==2" id="frameBox">
-					<img :src="item.image" id="minImg"/>
-					<h2>{{item.title}}</h2>
-					<p>{{((new Date().getDate())-(new Date(item.publishTime*1000).getDate()))*24+new Date().getHours()+8-(new Date(item.publishTime*1000).getHours())}}小时前<b>评论{{item.commentCount}}</b></p>
-				</div>
+		<div id="tabTops">
+			<div id="forTops" v-for="item,index in listReviews" :key=item.id>
+				<h3>{{item.title}}</h3>
+				<p>
+					<img :src="item.userImage" id="userImg"/>
+					<span>{{item.nickname}}-评分
+					《<b>{{item.relatedObj.title}}</b>》</span>
+					<em v-if="item.rating">{{item.rating}}</em>
+				</p>
 			</div>
 			
+			
 		</div>
-		<div id="more" @click="handleMore()">
+		<div id="more">
 			<img src="../assets/loading.gif" v-if="state"/>
-			<p v-else="!state">{{bottomInfo}}</p>
 		</div>
-		
 		
 	</div>
 	
+
+
 </template>
 
 <script>
+
 	import axios from "axios";
-	import { Loadmore } from 'mint-ui';
 	import "../assets/icon-font/iconfont.css";
+	
 	export default{
 		
 		data(){	
+			
 			return {
-				topNews:{},
-				listNews:[],
-				page:1,
-				bottomInfo:"",
+				topReviews:{},
+				listReviews:[],
 				state:true
 				
 				
+				
 			}
+			
 		},
 		methods:{
-			handleMore:function (){		
-				if(this.page>=10)
-				{	
-					this.bottomInfo="没有更多新闻了";
-				}
-				else{
-					this.page++;
-					this.getData("/Service/callback.mi/News/NewsList.api?t=201841810523941798&pageIndex=",this.page);
-				}
+			getTData:function(url){
+				
+					axios.get(url).then(res=>{ 	
+
+							
+					var timer=setTimeout(()=>{
+					this.topReviews=res.data;
+						
+					},1000);	
+					}).catch(err=>{ console.log("error") });
 				
 				
 			},
-			getData:function(url,currentpage){
-				if(!currentpage)
-				{
-					axios.get(url).then(res=>{ 					
-						this.topNews=res.data.news; }).catch(err=>{ console.log("error") });
-				}
-				if(currentpage){	
-					axios.get(url+currentpage.toString()).then(res=>{ 
-						this.state=true;
-						var timer=setTimeout(()=>{this.listNews=[...this.listNews,...res.data.newsList] ;
-							this.state=false;
-						this.bottomInfo="加载更多";
+			getRData:function(url){
+				
+					axios.get(url).then(res=>{ 	
 						
-						}
 						
-						,1000);
-						
-						console.log(this.listNews);	
-						
+					 var timer=setTimeout(()=>{
+					this.listReviews=res.data;
+					this.state=false;		
+					},2000);	
 					}).catch(err=>{ console.log("error") });
-						
-				}
+				
 				
 			}
 		},
 		mounted(){
-			this.getData("/Service/callback.mi/PageSubArea/GetRecommendationIndexInfo.api?t=20184189525095544");
-			this.getData("/Service/callback.mi/News/NewsList.api?t=201841810523941798&pageIndex=",this.page);
+			
+			this.getTData("/Service/callback.mi/PageSubArea/GetRecommendationIndexInfo.api?t=2018419943275129");
+			this.getRData("/Service/callback.mi/MobileMovie/Review.api?needTop=false&t=2018420147306923");
 			
 			
 		}
@@ -104,7 +96,7 @@
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 img{
 	display: block;
 }
@@ -116,84 +108,106 @@ html,body,h2,p{
 	margin: 0;
 	padding: 0;
 }
-	#news{
+#reviews{
+	width: 100%;
+	#revTop{
 		width: 100%;
-		#firstNews{
-			width: 100%;
-			img{
-				width: 100%;
-				height: auto;
-			}
+		
+		#retop{
+			font-size: 0.08rem;
+			height: 1rem;
+			
 			
 		}
-		#tabNews{
-			width: 100%;
-			#forBox{
-				width: 100%;
-				height: auto;
-				#frameBox{
-				
-				margin: 0 auto;
-				width: 80%;
-				height: auto;
-				padding-top:0.2rem ;
-				padding-bottom:0.2rem ;
-				border-bottom: 1px solid #DEDEDE;
-				#minImg{
-					width: 1rem;
-					max-height: 0.7rem;
-					float: left;
-					margin-right: 0.25rem;
-				}
-				#imgbox{
-					margin-top: 0.15rem;
-					height: 0.6rem;
-					display:flex;
-					justify-content:center;
-					
-					#itemimg{
-						overflow: hidden;
-						width:1rem;
-						max-height: 0.6rem;
-						margin: 0.02rem;
-						img{
-						width: 1rem;
-						
-					}
-					}
-					
-				}
-				h2{
-					
-					width: 100%;
-					text-align: left;
-					font-size: 0.15rem;
-					margin: 0 auto;
-					font-weight: bold;
-					
-				}
-				p{
-					text-align: left;
-					font-size: 0.06rem;
-					width: 100%;
-					margin: 0.05rem auto;
-					color: 	#D6D6D6;
-					b{
-						margin-left: 0.3rem;
-						font-size: 0.06rem;
-						font-weight: 400;
-						color: 	#D6D6D6;
-					}
-				}
-				
-			}
-			}
+		#reTitle{
 			
+			width: 100%;
+			height: 0.7rem;
+			background: rgba(0,0,0,0.4);
+			position: relative;
+			display: flex;
+			h4{
+				color: white;
+				left: 1rem;
+				position: absolute;
+				font-size: 0.2rem;
+			}
+			#titleImg{
+				position: absolute;
+				bottom: 0;
+				width: 0.7rem;
+				left: 0.15rem;
+				bottom: 0.15rem;
+			}
+			p{
+				bottom: 0.15rem;
+				position: absolute;
+				left: 1rem;
+				font-size: 0.14rem;
+				color:whitesmoke;	
+				text-align: center;
+					
+			}
+		}		
+	}
+	
+	#tabTops{
+	    margin: 0 auto;
+		text-align: left;
+		width: 90%;
+		
+		#forTops{
+			border-top: 1px solid #DEDEDE;
+			padding-top:0.18rem;
+			padding-bottom:0.18rem;
+			
+			h3{
+				font-size: 0.18rem;
+				margin-bottom:0.12rem;
+			}
+			p{
+				font-size: 0.12rem;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				height: 0.2rem;
+				display: flex;
+				#userImg{
+					width: 0.2rem;
+					display: inline-block;
+					border-radius: 0.1rem;
+				}
+				span{
+					color: gray;
+					height: 0.2rem;
+					line-height: 0.2rem;
+					margin-left: 0.05rem;
+				}
+				em{
+					height: 0.2rem;
+					padding-left: 0.05rem;
+					padding-right: 0.05rem;
+					line-height: 0.2rem;
+					background: green;
+					color: white;
+					font-style: normal;
+				}
+				
+			}
 		}
-		#more{
+	}
+}
+
+
+
+
+
+
+
+#more{
 			padding-top: 0.15rem;
 			padding-bottom: 0.15rem;
-			height: 0.3rem;
+			height: 100%;
 		    font-size: 0.18rem;
 		    line-height: 0.3rem;
 		    width: 100%;
@@ -201,5 +215,4 @@ html,body,h2,p{
 		    	margin: 0 auto;
 		    }
 		}
-	}
 </style>
