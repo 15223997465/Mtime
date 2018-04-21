@@ -16,8 +16,12 @@ import TrailerComponent from "../components/trailer"
 import ToplistComponent from "../components/toplist"
 import ReviewComponent from "../components/review"
 import MovieComponent from "../components/movie"
+<<<<<<< HEAD
 import LazyRender from 'vue-lazy-render'
 Vue.use(LazyRender)
+=======
+
+>>>>>>> c82ee33c0656fd0a5164dc77820ffdf97c95f608
 Vue.use(Router)
 
 const router = new Router({
@@ -42,26 +46,26 @@ const router = new Router({
       ]
     },
     {
-      path: "/homemovie",
+      path: "/homemovie/:id",
       component: HomemovieComponent
     },
 
-		{
-			path: "/movie",
-			component: MovieComponent,
-		},
-		{
-			path: "/theater/:id",
-			component: TheaterComponent,
-		},
-		{
-			path: "/login",
-			component: LoginComponent
-		},
-		{
-			path: "/register",
-			component: RegisterComponent
-		},
+    {
+      path: "/movie",
+      component: MovieComponent,
+    },
+    {
+      path: "/theater/:id",
+      component: TheaterComponent,
+    },
+    {
+      path: "/login",
+      component: LoginComponent
+    },
+    {
+      path: "/register",
+      component: RegisterComponent
+    },
 
     {
       path: "/theater/:id",

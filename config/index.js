@@ -29,6 +29,7 @@ module.exports = {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
         changeOrigin: true
+<<<<<<< HEAD
       }
       ,
       '/restapi': {
@@ -36,6 +37,19 @@ module.exports = {
         host: 'h5.ele.me',
         changeOrigin: true
       }
+=======
+      },
+      '/Service/callback.mi/Movie/MovieComingNew': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
+      '/Service/callback.mi/movie/Detail': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
+>>>>>>> c82ee33c0656fd0a5164dc77820ffdf97c95f608
     },
 
     // Various Dev Server settings
@@ -46,7 +60,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
