@@ -8,7 +8,7 @@
         <div class="swiper-slide" v-for="data in homeattention">
           <p class="time">{{data.rMonth}}月{{data.rDay}}日</p>
           <div class="info">
-            <img :src="data.image" alt="">
+            <img :src="data.image" alt="" @click="homemovie(data.id)">
             <div class="movieinfo">
               <h3>{{data.title}}</h3>
               <p class="want"><span>{{data.wantedCount}}</span> 人想看 - {{data.type}}</p>
@@ -32,7 +32,7 @@
         <li v-for="data in homemoviecomings" v-if="data.rMonth == mouth">
           <p class="time">{{data.rDay}}日</p>
           <div class="info">
-            <img :src="data.image" alt="">
+            <img :src="data.image" alt="" @click="homemovie(data.id)">
             <div class="movieinfo">
               <h3>{{data.title}}</h3>
               <p class="want"><span>{{data.wantedCount}}</span> 人想看 - {{data.type}}</p>
@@ -52,7 +52,7 @@
 
 <script>
 import axios from "axios"
-
+import router from "../router"
 export default {
   data() {
     return {
@@ -81,6 +81,11 @@ export default {
         clickable: true,
       },
     });
+  },
+  methods:{
+    homemovie(id){
+      router.push(`/homemovie/${id}`);
+    }
   }
 }
 </script>

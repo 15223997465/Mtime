@@ -20,7 +20,6 @@ import MeComponent from "../components/me"
 import LazyRender from 'vue-lazy-render'
 Vue.use(LazyRender)
 Vue.use(Router)
-
 const router = new Router({
   mode: "hash", //默认值是hash
   routes: [
@@ -47,17 +46,10 @@ const router = new Router({
       component: HomemovieComponent
     },
     {
-      path: "/login",
-      component: LoginComponent
-    },
-    {
-      path: "/register",
-      component: RegisterComponent
-    },
-    {
       path: "/me",
       component: MeComponent
     },
+
 		{
 			path:"/find/news/newsdetail/:id",
 			component: NewsDetailComponent
@@ -78,6 +70,10 @@ const router = new Router({
 			path: "/register",
 			component: RegisterComponent
 		},
+    {
+      path: "/find/news/newsdetail/:id",
+      component: NewsDetailComponent
+    },
     {
       path: "/find",
       component: FindComponent,
@@ -105,11 +101,10 @@ const router = new Router({
     },
 
 
-    /*{
+    {
       path: "*",
       redirect: "/home"
     }
-*/
 
   ]
 });

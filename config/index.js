@@ -29,7 +29,6 @@ module.exports = {
         target: 'https://m.mtime.cn',
         host: 'm.mtime.cn',
         changeOrigin: true
-      
       },
       '/Service/callback.mi/Movie/MovieComingNew': {
         target: 'https://m.mtime.cn',
@@ -41,6 +40,7 @@ module.exports = {
         host: 'm.mtime.cn',
         changeOrigin: true
       },
+
        '/Mregist': {
               target: 'http://localhost:3000',
               host: 'localhost:3000',
@@ -51,6 +51,17 @@ module.exports = {
               host: 'localhost:3000',
               changeOrigin:true,
        }
+
+      '/Service/callback.mi/Movie/HotLongComments': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
+      '/Service/callback.mi/Showtime/MovieComments': {
+        target: 'https://m.mtime.cn',
+        host: 'm.mtime.cn',
+        changeOrigin: true
+      },
     },
 
     // Various Dev Server settings
