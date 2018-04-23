@@ -48,7 +48,7 @@ methods: {
 				.then((response)=> {
 					this.callback=response.data;	
 					if(this.callback==2){
-					router.push("/movie");
+					router.push("/home");
 					}else{
 						alert("用户名或密码错误");
 					}
